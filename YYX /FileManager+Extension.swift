@@ -115,6 +115,17 @@ extension FileManager{
             return Dictionary()
         }
     }
+    func readHTMLFileToString(_ fileName: String) throws -> String {
+        guard let pathForResource = Bundle.main.path(forResource: fileName, ofType: fileType.txt.rawValue) else {
+            YYxErrorHandler.printOptionFail();return String()
+        }
+        do {
+            let content = try String(contentsOfFile: pathForResource, encoding: String.Encoding.utf8)
+            return content
+        } catch {
+            throw error
+        }
+    }
      //MARK: - to Sandbox path
      func writeUtf8TexttoSand(fileName:String,content:String,filetype:fileType){
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {

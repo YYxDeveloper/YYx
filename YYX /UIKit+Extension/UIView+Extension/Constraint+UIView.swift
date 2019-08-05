@@ -21,7 +21,7 @@ extension UIView{
         //https://medium.com/@hassanahmedkhan/autolayouts-via-layout-anchors-5214b3f746a9
         self.translatesAutoresizingMaskIntoConstraints = false
         self.leadingAnchor.constraint(equalTo:firstSuperView.leadingAnchor,constant:constant).isActive = true
-        self.trailingAnchor.constraint(equalTo: firstSuperView.trailingAnchor,constant:constant).isActive = true
+        self.trailingAnchor.constraint(equalTo: firstSuperView.trailingAnchor,constant:-constant).isActive = true
         self.topAnchor.constraint(equalTo: firstSuperView.topAnchor,constant:constant).isActive = true
         self.bottomAnchor.constraint(equalTo: firstSuperView.bottomAnchor,constant:constant).isActive = true
     }
