@@ -47,7 +47,7 @@ extension UIViewController{
         horizontalSlider.setupHorizontalSlider()
          self.addSubViewWithChildController(addSubViewController: horizontalSlider, toWitchView:toWitchView)
     }
-    func giveMeButton(with title:String) -> UIButton {
+    func giveMeTheWitchButton(with title:String) -> UIButton {
         var theBtn:UIButton?
         
         for subView in view.subviews{
