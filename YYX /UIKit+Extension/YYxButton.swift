@@ -25,7 +25,7 @@ class YYxButton: UIButton {
         
     }
     @objc func press()  {
-        print("xxx")
+        YYxErrorHandler.printFailMsg("YYxButton press")
     }
     
     

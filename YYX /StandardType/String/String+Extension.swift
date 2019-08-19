@@ -24,6 +24,10 @@ extension String{
         let endIndex = self.index(self.startIndex, offsetBy: theEndIndex)
         return self[startIndex ..< endIndex].convertToString()
     }
+    func isEmailFormat()->Bool {
+        return NSPredicate().isMatchRule(of: .EMAIL, witchContent: self)
+        
+    }
     func removeFromBehind(count:Int) -> String {
         return String(self.dropLast(count))
     }

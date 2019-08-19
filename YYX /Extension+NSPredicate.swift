@@ -21,7 +21,7 @@ extension NSPredicate{
         case PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[\\s\\S]{6,18}$"
     }
     func isMatchRule(of expression:expressionContent ,witchContent:String) -> Bool {
-        let redicate = NSPredicate(format: "SELF MATCHES %@", expression.hashValue)
+        let redicate = NSPredicate(format: "SELF MATCHES %@", expression.rawValue)
         if redicate.evaluate(with: witchContent) {
             return true
         }else{

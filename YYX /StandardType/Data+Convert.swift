@@ -22,6 +22,7 @@ extension Data{
         do {
             //PlistDictionaryExample
             
+            
             // json 還沒轉型
             //refer : JSONDecoder() ;;ever
             let JsonStruct = try JSONDecoder().decode(modelType, from: self)
