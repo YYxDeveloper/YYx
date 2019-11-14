@@ -81,12 +81,12 @@ extension UIView{
         self.layer.add(rotateAnimation, forKey: keyPath.rawValue)
     }
 
-    func shake(keyPath:CAKeyframeTranslationKeyPath,isRepeat:Bool) {
+    func shake(keyPath:CAKeyframeTranslationKeyPath,isRepeat:Bool,duration:Double,shakeLevel:CGFloat) {
         let ViewWidth = self.frame.size.width
-        let shakeLevel = ViewWidth * 0.2
+        let shakeLevel = ViewWidth * shakeLevel
         
             let shakeAnimation = CAKeyframeAnimation.init(keyPath: keyPath.rawValue)
-            shakeAnimation.duration = 0.1
+            shakeAnimation.duration = duration
         if isRepeat {
             shakeAnimation.repeatCount = Float.infinity
         }

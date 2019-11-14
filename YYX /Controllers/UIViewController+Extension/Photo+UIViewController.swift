@@ -44,14 +44,14 @@
 //            print("User has denied the permission.")
 //        }
 //    }
-//    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 //
-//        guard  (info[.originalImage] as? UIImage) != nil else {
-//            print("imagePicker got Problem")
-//            return
-//        }
-//        //        self.memberHeadImage.image = image
-//        dismiss(animated: true, completion: nil)
+//      guard  let image = info[.originalImage] as? UIImage  else {
+//                print("imagePicker got Problem")
+//                return
+//            }
+//                   //self.headImageView.image = image
+//            dismiss(animated: true, completion: nil)
 //    }
 //
 //}

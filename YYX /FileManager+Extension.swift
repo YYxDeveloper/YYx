@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 enum fileType:String {
     case json,txt,plist
 }
@@ -62,7 +63,7 @@ extension FileManager{
     }
     func decodeJsonDatabyUtf8FromBundle <T:Codable>(fileName:String,modelType:T.Type,compelete:@escaping (T)->()){
         do {
-            let ss = try FileManager.default.readJsonFileFromBundle(fileName).data(using: .utf8)
+            let ss = try FileManager.default.readUTF8FileFromBundle(fileName).data(using: .utf8)
             ss~!.decodeJsonDatabyUtf8(modelType: modelType.self, compelete: {data in
                 compelete(data)
             })
@@ -70,7 +71,7 @@ extension FileManager{
             print(error)
         }
     }
-    func readJsonFileFromBundle(_ fileName: String) throws -> String{
+    func readUTF8FileFromBundle(_ fileName: String) throws -> String{
         guard let pathForResource = Bundle.main.path(forResource: fileName, ofType: fileType.json.rawValue) else {
             YYxErrorHandler.printOptionFail();return String()
         }
@@ -115,7 +116,9 @@ extension FileManager{
             return Dictionary()
         }
     }
+     //製這種文字檔會有\n
     func readHTMLFileToString(_ fileName: String) throws -> String {
+       
         guard let pathForResource = Bundle.main.path(forResource: fileName, ofType: fileType.txt.rawValue) else {
             YYxErrorHandler.printOptionFail();return String()
         }
@@ -189,6 +192,28 @@ extension FileManager{
         return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
     }
+    func savePNGImage(image: UIImage,withName:String) -> Bool {
+             guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
+                 return false
+             }
+             guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+                 return false
+             }
+             do {
+                 try data.write(to: directory.appendingPathComponent("\(withName).png")!)
+                 return true
+             } catch {
+                 print(error.localizedDescription)
+                 return false
+             }
+         }
+         func loadPNGImage(named: String) -> UIImage? {
+             if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+                 return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+             }
+             return nil
+         }
+
     // MARK: - about Jailbtoken
      func isJailbtoken() -> Bool {
         

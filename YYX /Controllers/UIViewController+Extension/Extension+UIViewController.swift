@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 extension UIViewController{
-    
+    var safelayoutGuide: UILayoutGuide {
+            return self.view.safeAreaLayoutGuide
+    }
     static func giveMeViewControllerFromStoryBoard(storyBoardName:String,storyBoardID:String) -> UIViewController {
         
         let storyboard = UIStoryboard.giveMeStoryBoard(storyBordFileName: storyBoardName)

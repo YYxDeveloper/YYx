@@ -54,6 +54,9 @@ extension UIView{
         }
         return theView
     }
+    func setAutoresizingFalse() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
     func becomeCircle() {
         self.layer.cornerRadius = self.height / 2
     }

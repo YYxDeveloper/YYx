@@ -10,6 +10,21 @@ import UIKit
 import Network
 class YYxViewController: UIViewController {
 
+    lazy var scrollView:UIScrollView = {
+        //但是重复调用， Lazy 属性的代码块只会调用一次
+        return UIScrollView()
+        
+    }()
+    lazy var mainContainerView:UIView = {
+       
+        let aa = UIView()
+        self.scrollView.addSubview(aa)
+        
+        aa.anchorEqualParentViewWithConstant(constant: 10)
+        
+        
+        return aa
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -19,6 +34,10 @@ class YYxViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    override func viewDidLayoutSubviews() {
+        print("1111")//xxxxx
+    }
+    
     func checkNetworkState() {
         NWPathMonitor().checkNetworkStatus()
     }

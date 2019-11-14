@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 extension String{
      //MARK: Convert Date
     func convertToCurrentDate(format:String) -> Date {
@@ -28,6 +29,15 @@ extension String{
         return Float(self) ?? Float.defaultValue
     }
     
+    func convertBase64ToImage() -> UIImage? {
+        
+        if let decodedData = Data(base64Encoded: self){
+            return    UIImage(data: decodedData as Data)
+        }else{
+            YYxErrorHandler.printOptionFail();return UIImage()
+        }
+        
+    }
     
 }
 

@@ -15,4 +15,14 @@ extension CGFloat{
     func convertInt() -> Int {
         return Int(self)
     }
+    func convertToPercentStringWithoutDecimal() -> String {
+        guard self < 1 && self > 0 else {
+            YYxErrorHandler.printGuardFail()
+            return String();
+        }
+        return String(format: "%.0f",self * 100)
+     }
+    static func giveMeMultiplierValue() -> CGFloat {
+        return CGFloat.random(in: 0...1)
+    }
 }

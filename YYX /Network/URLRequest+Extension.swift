@@ -9,15 +9,17 @@
 import Foundation
 
 extension URLRequest{
-    mutating func setDefaultSetting(body:[String:String],witchHttpMethod:httpMethodString) {
+    mutating func setDefaultSetting(body:[String:String]?,witchHttpMethod:httpMethodString) {
         //method
         self.httpMethod = witchHttpMethod.rawValue
         
         //head
         self.setValue("Application/json", forHTTPHeaderField: "Content-Type")
        //body
-        let httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        let httpBody = try? JSONSerialization.data(withJSONObject: body ?? [String:String](), options: [])
         self.httpBody = httpBody
+        
+        self.httpShouldHandleCookies = true
         
         
     }

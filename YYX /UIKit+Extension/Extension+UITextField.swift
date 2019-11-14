@@ -20,4 +20,7 @@ extension UITextField{
         self.attributedPlaceholder = NSAttributedString(string: text,
                                                         attributes: [NSAttributedString.Key.foregroundColor: textColor])
     }
+    func dissmssKeyboard() {
+        self.endEditing(true)
+    }
 }

@@ -22,5 +22,12 @@ extension Int{
     func convertToString() -> String {
         return String(self)
     }
+    func convertToPercentStringWithoutDecimal() -> String {
+          guard self < 1 && self > 0 else {
+              YYxErrorHandler.printGuardFail()
+              return String();
+          }
+          return String(format: "%.0f",self * 100)
+       }
     
 }
