@@ -15,8 +15,16 @@ extension UIView{
                     https://medium.com/@apppeterpan/設定背景圖片的-top-間距條件對象是-superview-不是-top-layout-guide-8d8b46
      */
     func setTopAnchorEqualStatusBarTop(witchViewController:UIViewController){
-        let statusHeight = UIApplication.shared.statusBarFrame.size.height // 20 or 40
-             print("statusHeight=\(statusHeight)")
+         var statusHeight:CGFloat?
+        if #available(iOS 13.0, *) {
+            let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+             statusHeight = keyWindow?.windowScene?.statusBarManager?.statusBarFrame.height~!
+            
+        } else {
+             statusHeight = UIApplication.shared.statusBarFrame.size.height // 20 or 40
+        }
+       
+        print("statusHeight=\(String(describing: statusHeight))")
         self.topAnchor.constraint(equalTo: witchViewController.view.bottomAnchor, constant: 0).isActive = true
     }
     func sameAsSuperViewTopAndBottomAnchor() {

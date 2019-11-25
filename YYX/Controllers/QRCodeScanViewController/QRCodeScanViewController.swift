@@ -67,7 +67,10 @@ class QRCodeScanViewController: UIViewController {
     }
     
     let photoSettings = AVCapturePhotoSettings()
-    photoSettings.isAutoStillImageStabilizationEnabled = true
+    if #available(iOS 13.0, *) {} else {
+         photoSettings.isAutoStillImageStabilizationEnabled = true
+    }
+   
     photoSettings.isHighResolutionPhotoEnabled = true
     photoSettings.flashMode = .auto
     

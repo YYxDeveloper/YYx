@@ -23,10 +23,10 @@ extension UIImage{
 //            CIColor(red: 1, green: 1, blue: 1)
             colorFilter.setValue(backgroundColor, forKey: "inputColor1") // Background white
             colorFilter.setValue(frontGroundColor, forKey: "inputColor0") // Foreground or the barcode RED
-            guard let qrCodeImage = colorFilter.outputImage
-                else {
-                    return nil
-            }
+//            guard let qrCodeImage = colorFilter.outputImage
+//                else {
+//                    return nil
+//            }
             //                let scaleX = imgQRCode.frame.size.width / qrCodeImage.extent.size.width
             //                let scaleY = imgQRCode.frame.size.height / qrCodeImage.extent.size.height
             let transform = CGAffineTransform(scaleX: 20, y: 20)

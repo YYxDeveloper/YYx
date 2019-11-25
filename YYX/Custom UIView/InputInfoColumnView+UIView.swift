@@ -36,7 +36,7 @@ extension UIView{
             let textField = UITextField()
             self.addSubview(textField)
             textField.delegate = delegate
-            textField.placeholder = HYBLoginMainViewController.textFieldPlaceholder.请输入手机号.rawValue
+            textField.placeholder = "xxxxxxxx"
             
             let dividView = UIView()
             self.addSubview(dividView)
@@ -78,7 +78,7 @@ extension UIView{
             let textField = UITextField()
             self.addSubview(textField)
             textField.delegate = delegate
-            textField.placeholder = HYBLoginMainViewController.textFieldPlaceholder.请输入验证码.rawValue
+            textField.placeholder = "HYBLoginMainViewController.textFieldPlaceholder.请输入验证码.rawValue"
             
             let verifyButton  = UIButton()
             self.addSubview(verifyButton)
@@ -132,7 +132,7 @@ extension UIView{
             let textField = UITextField()
             self.addSubview(textField)
             textField.delegate = delegate
-            textField.placeholder = HYBLoginMainViewController.textFieldPlaceholder.passwordText.rawValue
+            textField.placeholder = "HYBLoginMainViewController.textFieldPlaceholder.passwordText.rawValue"
             
             let eyeImageView = UIImageView()
             eyeImageView.image = UIImage(named: "不显示密码")
@@ -182,7 +182,7 @@ extension UIView{
             let textField = UITextField()
             self.addSubview(textField)
             textField.delegate = delegate
-            textField.placeholder = HYBLoginMainViewController.textFieldPlaceholder.recommendText.rawValue
+            textField.placeholder = "HYBLoginMainViewController.textFieldPlaceholder.recommendText.rawValue"
             //            textField.backgroundColor = .orange
             
             let dividView = UIView()
