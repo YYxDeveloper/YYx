@@ -63,7 +63,7 @@ extension FileManager{
     }
     func decodeJsonDatabyUtf8FromBundle <T:Codable>(fileName:String,modelType:T.Type,compelete:@escaping (T)->()){
         do {
-            let ss = try FileManager.default.readUTF8FileFromBundle(fileName).data(using: .utf8)
+            let ss = try FileManager.default.readUTF8FileFromBundle(fileName, type: fileType.json).data(using: .utf8)
             ss~!.decodeJsonDatabyUtf8(modelType: modelType.self, compelete: {data in
                 compelete(data)
             })
@@ -71,11 +71,14 @@ extension FileManager{
             print(error)
         }
     }
-    func readUTF8FileFromBundle(_ fileName: String) throws -> String{
-        guard let pathForResource = Bundle.main.path(forResource: fileName, ofType: fileType.json.rawValue) else {
+    /// use xcode to edit text file will add /n line break for u automation,otherwise use VS code
+    /// - Since: https://stackoverflow.com/questions/47236922/why-is-there-an-extra-new-line-character-when-i-create-a-string-using-initconte
+    func readUTF8FileFromBundle(_ fileName: String,type:fileType) throws -> String{
+        guard let pathForResource = Bundle.main.path(forResource: fileName, ofType: type.rawValue) else {
             YYxErrorHandler.printOptionFail();return String()
         }
         do {
+            print(pathForResource)
             let content = try String(contentsOfFile: pathForResource, encoding: String.Encoding.utf8)
             return content
         } catch {
