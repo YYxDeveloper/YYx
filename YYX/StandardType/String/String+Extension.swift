@@ -12,6 +12,10 @@ enum UTCZone:String{
     case plus8 = "UTC+8"
 }
 extension String{
+    static func randomString(length: Int) -> String {
+            let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            return String((0..<length).map{ _ in letters.randomElement()! })
+          }
     func replaceChartTo1Blank(changeChart:String) -> String{
         return self.replacingOccurrences(of: changeChart, with: " ")
     }
