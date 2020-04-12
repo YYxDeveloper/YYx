@@ -13,7 +13,7 @@ extension UIPageViewController{
     static let id = "PageViewController"
     static func giveMeAPageViewController() -> UIViewController {
         
-         let pVC = ViewController.giveMeViewControllerFromStoryBoard(storyBoardName: String(describing: id), storyBoardID:id )
+         let pVC = UIViewController.giveMeViewControllerFromStoryBoard(storyBoardName: String(describing: id), storyBoardID:id )
         return pVC
     }
 }
