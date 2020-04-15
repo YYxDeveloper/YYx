@@ -44,7 +44,7 @@ extension String {
     ///   - key: key
     ///   - iv: iv
     /// - Returns: String
-    func aesDecrypt(key: String, iv: String = String.randomString(length: 16)) -> String? {
+    func aesDecrypt(key: String, iv: String) -> String? {
         var result: String?
         do {
             // 使用Base64的解碼方式將字串解碼後再轉换Data
