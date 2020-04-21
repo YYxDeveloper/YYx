@@ -19,5 +19,6 @@ class LocalizableMan {
         return NSLocalizedString(withKey, comment: EMPTY_STR)
     }
     
+    
 
 }
