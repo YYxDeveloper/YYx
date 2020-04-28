@@ -30,6 +30,15 @@ enum CAKeyframeRotationKeyPath:String {
     case transatiolnZ = "transform.rotation.z"
 }
 extension UIView{
+    func turnAround(duration:CFTimeInterval) {
+           UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration/2, delay: 0, animations: {
+               self.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+           }, completion: {data in
+               UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration/2, delay: 0, animations: {
+                   self.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 2)
+               })
+           })
+       }
     func fade(toPoint:CGPoint,isRepeat:Bool) {
 //        let aa = CGAffineTransform.init(translationX: 100
 //            , y: 0)
