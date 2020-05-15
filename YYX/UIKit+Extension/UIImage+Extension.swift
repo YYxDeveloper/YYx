@@ -38,6 +38,20 @@ extension UIImage{
         }
         return nil
     }
+   static func giveMeDefaultQRCode(from string: String) -> UIImage? {
+           let data = string.data(using: String.Encoding.ascii)
+
+           if let filter = CIFilter(name: "CIQRCodeGenerator") {
+               filter.setValue(data, forKey: "inputMessage")
+               let transform = CGAffineTransform(scaleX: 3, y: 3)
+
+               if let output = filter.outputImage?.transformed(by: transform) {
+                   return UIImage(ciImage: output)
+               }
+           }
+
+           return nil
+       }
    static func giveMeBackgroundColorAsImage(color: UIColor) -> UIImage {
         
     let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
