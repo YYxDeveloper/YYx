@@ -44,10 +44,24 @@ extension UIView{
         
         return view
     }
-     func searchTagView(with parentView:UIView,tag:Int) -> UIView? {
+    /*拿到後：
+           view.addSubview(v)
+           v.translatesAutoresizingMaskIntoConstraints=false
+           achor...
+        */
+       static func giveMeViewFromStroyBord(stroyBordName:String,VCstoryBoardID:String,viewTag:Int) -> UIView {
+           
+           let storyboard = UIStoryboard(name: stroyBordName, bundle: nil)
+           let controller = storyboard.instantiateViewController(withIdentifier: VCstoryBoardID)
+           let view = controller.view.searchTagView(tag: 9090)!
+           
+           
+           return view
+       }
+     func searchTagView(tag:Int) -> UIView? {
         var theView:UIView?
         
-        for view in parentView.subviews {
+        for view in self.subviews {
             guard view.tag == tag else{continue}
             
             theView = view
