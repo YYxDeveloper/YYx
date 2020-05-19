@@ -195,6 +195,9 @@ extension FileManager{
         return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
     }
+    func giveMeFolderPathInSandbox(folderName:String) -> String {
+         return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0].appending("/\(folderName)")
+    }
     func savePNGImage(image: UIImage,withName:String) -> Bool {
              guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
                  return false
