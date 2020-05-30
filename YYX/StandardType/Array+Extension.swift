@@ -26,6 +26,9 @@ extension Array{
         }
         return found == true ? true : false
     }
+    func isElementExsit(index:Int) -> Bool{
+        return self.indices.contains(index)
+    }
     
 }
 extension Array  where Element: SignedInteger {
