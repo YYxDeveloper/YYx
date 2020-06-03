@@ -30,6 +30,15 @@ enum CAKeyframeRotationKeyPath:String {
     case transatiolnZ = "transform.rotation.z"
 }
 extension UIView{
+    func roundedButton(){
+              let maskPath1 = UIBezierPath(roundedRect: bounds,
+                  byRoundingCorners: [.topLeft , .topRight],
+                  cornerRadii: CGSize(width: 20, height: 20))
+              let maskLayer1 = CAShapeLayer()
+              maskLayer1.frame = bounds
+              maskLayer1.path = maskPath1.cgPath
+              layer.mask = maskLayer1
+          }
     func turnAround(duration:CFTimeInterval) {
            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: duration/2, delay: 0, animations: {
                self.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
