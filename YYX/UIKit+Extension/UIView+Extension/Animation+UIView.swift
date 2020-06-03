@@ -30,7 +30,7 @@ enum CAKeyframeRotationKeyPath:String {
     case transatiolnZ = "transform.rotation.z"
 }
 extension UIView{
-    func roundedButton(){
+    func roundedCorner(){
               let maskPath1 = UIBezierPath(roundedRect: bounds,
                   byRoundingCorners: [.topLeft , .topRight],
                   cornerRadii: CGSize(width: 20, height: 20))
