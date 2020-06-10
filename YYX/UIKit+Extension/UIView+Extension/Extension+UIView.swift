@@ -26,15 +26,6 @@ extension UIView{
             return UIView()
         }
     }
-    
-    @IBInspectable var radiusAngle: CGFloat {
-        get {
-            return self.layer.cornerRadius
-        }
-        set {
-           self.layer.cornerRadius = newValue
-        }
-    }
     static func giveMeBlurView(frame:CGRect) -> UIView {
         let view = UIView(frame: frame)
         let blurEffect = UIBlurEffect(style: .light)
