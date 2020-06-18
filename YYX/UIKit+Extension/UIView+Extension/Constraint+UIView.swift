@@ -18,7 +18,7 @@ extension UIView{
         var statusHeight:CGFloat?
         if #available(iOS 13.0, *) {
             let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-            statusHeight = keyWindow?.windowScene?.statusBarManager?.statusBarFrame.height~!
+            statusHeight = keyWindow?.windowScene?.statusBarManager?.statusBarFrame.height
             
         } else {
             statusHeight = UIApplication.shared.statusBarFrame.size.height // 20 or 40
@@ -27,63 +27,8 @@ extension UIView{
         print("statusHeight=\(String(describing: statusHeight))")
         self.topAnchor.constraint(equalTo: witchViewController.view.bottomAnchor, constant: 0).isActive = true
     }
-    func sameAsSuperViewTopAndBottomAnchor() {
-        self.setAutoresizingFalse()
-        self.topAnchor.constraint(equalTo: firstSuperView.topAnchor).isActive = true
-        self.bottomAnchor.constraint(equalTo: firstSuperView.bottomAnchor).isActive = true
-
-    }
-    func sameAsSuperViewTopAndBottomAnchor(marginSpace:CGFloat) {
-        self.setAutoresizingFalse()
-        self.topAnchor.constraint(equalTo: firstSuperView.topAnchor,constant:marginSpace ).isActive = true
-        self.bottomAnchor.constraint(equalTo: firstSuperView.bottomAnchor,constant:marginSpace ).isActive = true
-
-    }
-    func anchorCommonSuperViewConstraint(marginSpace:CGFloat){
-        //上左右+高
-        self.setAutoresizingFalse()
-        self.heightAnchor.constraint(equalToConstant: marginSpace).isActive = true
-        self.topAnchor.constraint(equalTo: firstSuperView.topAnchor).isActive = true
-        self.leadingAnchor.constraint(equalTo: firstSuperView.leadingAnchor).isActive = true
-        self.trailingAnchor.constraint(equalTo: firstSuperView.trailingAnchor).isActive = true
-        
-    }
-    func sameAsSuperViewHeightAnchor() -> NSLayoutConstraint {
-        return self.heightAnchor.constraint(equalTo: self.firstSuperView.heightAnchor, constant: 0)
-    }
-    func sameAsSuperViewWidthAnchor() -> NSLayoutConstraint {
-        return self.widthAnchor.constraint(equalTo: self.firstSuperView.widthAnchor, constant: 0)
-    }
-    func sameAsSuperViewTopAnchor() -> NSLayoutConstraint {
-        return self.topAnchor.constraint(equalTo: self.firstSuperView.topAnchor, constant: 0)
-    }
-    func sameAsSuperViewTopAnchor(margnSpace:CGFloat) -> NSLayoutConstraint {
-        return self.topAnchor.constraint(equalTo: self.firstSuperView.topAnchor, constant: margnSpace)
-    }
-    func sameAsSuperViewBottomAnchor() -> NSLayoutConstraint {
-        return self.bottomAnchor.constraint(equalTo: self.firstSuperView.bottomAnchor, constant: 0)
-    }
-    func sameAsSuperViewBottomAnchor(margnSpace:CGFloat) -> NSLayoutConstraint {
-        return self.bottomAnchor.constraint(equalTo: self.firstSuperView.bottomAnchor, constant: -margnSpace)
-    }
-    func sameAsSuperViewRightAnchor() -> NSLayoutConstraint {
-        return self.rightAnchor.constraint(equalTo: self.firstSuperView.rightAnchor, constant: 0)
-    }
-    func sameAsSuperViewLeftAnchor() -> NSLayoutConstraint {
-        return self.leftAnchor.constraint(equalTo: self.firstSuperView.leftAnchor, constant: 0)
-    }
-    func sameAsSuperViewLeadingAnchor() -> NSLayoutConstraint {
-        return self.leadingAnchor.constraint(equalTo: self.firstSuperView.leadingAnchor, constant: 0)
-    }
-    func sameAsSuperViewLeadingAnchor(margnSpace:CGFloat) -> NSLayoutConstraint {
-        return self.leadingAnchor.constraint(equalTo: self.firstSuperView.leadingAnchor, constant: margnSpace)
-    }
-    func sameAsSuperViewTrailingAnchor() -> NSLayoutConstraint {
-        return self.trailingAnchor.constraint(equalTo: self.firstSuperView.trailingAnchor, constant: 0)
-    }
-    func sameAsSuperViewTrailingAnchor(margnSpace:CGFloat) -> NSLayoutConstraint {
-        return self.trailingAnchor.constraint(equalTo: self.firstSuperView.trailingAnchor, constant: -margnSpace)
-    }
+   
+   
     func heightEqualWidth() -> NSLayoutConstraint {
         return self.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1)
     }
@@ -125,42 +70,7 @@ extension UIView{
         //一定要有回傳值，不然 NSLayoutConstraint.activate會出錯
         return self.rightAnchor.constraint(equalTo: withView.leadingAnchor, constant: 0)
     }
-    func leadingAnchorAgainstTrail(TrailedView:UIView) {
-        self.leadingAnchor.constraint(equalTo: TrailedView.trailingAnchor).isActive = true
-    }
-    func leadingAnchorAgainstTrail(TrailedView:UIView,constant:CGFloat) {
-        self.leadingAnchor.constraint(equalTo: TrailedView.trailingAnchor,constant: constant).isActive = true
-    }
-    func trailAnchorAgainstLeading(leadingView:UIView)  {
-        self.trailingAnchor.constraint(equalTo: leadingView.leadingAnchor).isActive = true
-    }
-    func trailAnchorAgainstLeading(leadingView:UIView,constant:CGFloat)  {
-        self.trailingAnchor.constraint(equalTo: leadingView.leadingAnchor,constant: constant).isActive = true
-    }
-    func anchorEqualParentView() {
-        //https://medium.com/@hassanahmedkhan/autolayouts-via-layout-anchors-5214b3f746a9
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.leadingAnchor.constraint(equalTo:firstSuperView.leadingAnchor).isActive = true
-        self.trailingAnchor.constraint(equalTo: firstSuperView.trailingAnchor).isActive = true
-        self.topAnchor.constraint(equalTo: firstSuperView.topAnchor).isActive = true
-        self.bottomAnchor.constraint(equalTo: firstSuperView.bottomAnchor).isActive = true
-    }
-    func anchorEqualParentViewWithConstant(constant:CGFloat) {
-        //https://medium.com/@hassanahmedkhan/autolayouts-via-layout-anchors-5214b3f746a9
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.leadingAnchor.constraint(equalTo:firstSuperView.leadingAnchor,constant:constant).isActive = true
-        self.trailingAnchor.constraint(equalTo: firstSuperView.trailingAnchor,constant:-constant).isActive = true
-        self.topAnchor.constraint(equalTo: firstSuperView.topAnchor,constant:constant).isActive = true
-        self.bottomAnchor.constraint(equalTo: firstSuperView.bottomAnchor,constant:constant).isActive = true
-    }
-    func anchorEqualCenter(height:CGFloat,width:CGFloat) {
-        //https://medium.com/@hassanahmedkhan/autolayouts-via-layout-anchors-5214b3f746a9
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant: width).isActive = true
-        self.heightAnchor.constraint(equalToConstant: height).isActive = true
-        self.centerXAnchor.constraint(equalTo: firstSuperView.centerXAnchor).isActive = true
-        self.centerYAnchor.constraint(equalTo: firstSuperView.centerYAnchor).isActive = true
-    }
+   
     func changeAnchor (top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat, enableInsets: Bool) {
         //https://medium.com/@kemalekren/swift-create-custom-tableview-cell-with-programmatically-in-ios-835d3880513d
         var topInset = CGFloat(0)
@@ -193,6 +103,42 @@ extension UIView{
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
         
+    }
+    func sameAsSuperViewHeightAnchor() -> NSLayoutConstraint {
+        return self.heightAnchor.constraint(equalTo: self.firstSuperView.heightAnchor, constant: 0)
+    }
+    func sameAsSuperViewWidthAnchor() -> NSLayoutConstraint {
+        return self.widthAnchor.constraint(equalTo: self.firstSuperView.widthAnchor, constant: 0)
+    }
+    func sameAsSuperViewTopAnchor() -> NSLayoutConstraint {
+        return self.topAnchor.constraint(equalTo: self.firstSuperView.topAnchor, constant: 0)
+    }
+    func sameAsSuperViewTopAnchor(margnSpace:CGFloat) -> NSLayoutConstraint {
+        return self.topAnchor.constraint(equalTo: self.firstSuperView.topAnchor, constant: margnSpace)
+    }
+    func sameAsSuperViewBottomAnchor() -> NSLayoutConstraint {
+        return self.bottomAnchor.constraint(equalTo: self.firstSuperView.bottomAnchor, constant: 0)
+    }
+    func sameAsSuperViewBottomAnchor(margnSpace:CGFloat) -> NSLayoutConstraint {
+        return self.bottomAnchor.constraint(equalTo: self.firstSuperView.bottomAnchor, constant: -margnSpace)
+    }
+    func sameAsSuperViewRightAnchor() -> NSLayoutConstraint {
+        return self.rightAnchor.constraint(equalTo: self.firstSuperView.rightAnchor, constant: 0)
+    }
+    func sameAsSuperViewLeftAnchor() -> NSLayoutConstraint {
+        return self.leftAnchor.constraint(equalTo: self.firstSuperView.leftAnchor, constant: 0)
+    }
+    func sameAsSuperViewLeadingAnchor() -> NSLayoutConstraint {
+        return self.leadingAnchor.constraint(equalTo: self.firstSuperView.leadingAnchor, constant: 0)
+    }
+    func sameAsSuperViewLeadingAnchor(margnSpace:CGFloat) -> NSLayoutConstraint {
+        return self.leadingAnchor.constraint(equalTo: self.firstSuperView.leadingAnchor, constant: margnSpace)
+    }
+    func sameAsSuperViewTrailingAnchor() -> NSLayoutConstraint {
+        return self.trailingAnchor.constraint(equalTo: self.firstSuperView.trailingAnchor, constant: 0)
+    }
+    func sameAsSuperViewTrailingAnchor(margnSpace:CGFloat) -> NSLayoutConstraint {
+        return self.trailingAnchor.constraint(equalTo: self.firstSuperView.trailingAnchor, constant: -margnSpace)
     }
     
 }
