@@ -11,19 +11,19 @@ import UIKit
 extension UIView{
     //this function will WARNING
     /**
-                    not warning soluion by storyboard
-                    https://medium.com/@apppeterpan/設定背景圖片的-top-間距條件對象是-superview-不是-top-layout-guide-8d8b46
+     not warning soluion by storyboard
+     https://medium.com/@apppeterpan/設定背景圖片的-top-間距條件對象是-superview-不是-top-layout-guide-8d8b46
      */
     func setTopAnchorEqualStatusBarTop(witchViewController:UIViewController){
-         var statusHeight:CGFloat?
+        var statusHeight:CGFloat?
         if #available(iOS 13.0, *) {
             let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-             statusHeight = keyWindow?.windowScene?.statusBarManager?.statusBarFrame.height~!
+            statusHeight = keyWindow?.windowScene?.statusBarManager?.statusBarFrame.height~!
             
         } else {
-             statusHeight = UIApplication.shared.statusBarFrame.size.height // 20 or 40
+            statusHeight = UIApplication.shared.statusBarFrame.size.height // 20 or 40
         }
-       
+        
         print("statusHeight=\(String(describing: statusHeight))")
         self.topAnchor.constraint(equalTo: witchViewController.view.bottomAnchor, constant: 0).isActive = true
     }
@@ -124,6 +124,18 @@ extension UIView{
         
         //一定要有回傳值，不然 NSLayoutConstraint.activate會出錯
         return self.rightAnchor.constraint(equalTo: withView.leadingAnchor, constant: 0)
+    }
+    func leadingAnchorAgainstTrail(TrailedView:UIView) {
+        self.leadingAnchor.constraint(equalTo: TrailedView.trailingAnchor).isActive = true
+    }
+    func leadingAnchorAgainstTrail(TrailedView:UIView,constant:CGFloat) {
+        self.leadingAnchor.constraint(equalTo: TrailedView.trailingAnchor,constant: constant).isActive = true
+    }
+    func trailAnchorAgainstLeading(leadingView:UIView)  {
+        self.trailingAnchor.constraint(equalTo: leadingView.leadingAnchor).isActive = true
+    }
+    func trailAnchorAgainstLeading(leadingView:UIView,constant:CGFloat)  {
+        self.trailingAnchor.constraint(equalTo: leadingView.leadingAnchor,constant: constant).isActive = true
     }
     func anchorEqualParentView() {
         //https://medium.com/@hassanahmedkhan/autolayouts-via-layout-anchors-5214b3f746a9
