@@ -18,13 +18,20 @@ extension UIView{
     func bottomSameAsParentBottomAnchor() {
         self.bottomAnchor.constraint(equalTo: firstSuperView.bottomAnchor).isActive = true
     }
+    func bottomSameAsParentBottomAnchorWithMarginsGuide() {
+        self.bottomAnchor.constraint(equalTo: firstSuperView.layoutMarginsGuide.bottomAnchor).isActive = true
+    }
     func bottomSameAsParentBottomAnchor(constant:CGFloat) {
         self.bottomAnchor.constraint(equalTo: firstSuperView.bottomAnchor,constant:-constant ).isActive = true
     }
+    
     func topSameAsParentTopAnchor(constant:CGFloat) {
         self.topAnchor.constraint(equalTo: firstSuperView.topAnchor, constant: constant).isActive = true
         
     }
+    func topSameAsParentTopAnchorWithMarginsGuide(){
+        self.topAnchor.constraint(equalTo: firstSuperView.layoutMarginsGuide.topAnchor).isActive = true
+       }
     func topSameAsParentTopAnchor(){
         self.topAnchor.constraint(equalTo: firstSuperView.topAnchor).isActive = true
     }
@@ -40,6 +47,10 @@ extension UIView{
         self.leadingAnchor.constraint(equalTo: firstSuperView.leadingAnchor).isActive = true
         
     }
+    func leadingSameAsParentLeadingAnchor(constant:CGFloat) {
+        self.leadingAnchor.constraint(equalTo: firstSuperView.leadingAnchor,constant:constant).isActive = true
+           
+       }
     func anchorsSameAsParentLeadAndTrail() {
         self.leadingAnchor.constraint(equalTo: firstSuperView.leadingAnchor).isActive = true
         self.trailingAnchor.constraint(equalTo: firstSuperView.trailingAnchor).isActive = true
