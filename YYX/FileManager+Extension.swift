@@ -122,7 +122,7 @@ extension FileManager{
      //製這種文字檔會有\n
     func readHTMLFileToString(_ fileName: String) throws -> String {
        
-        guard let pathForResource = Bundle.main.path(forResource: fileName, ofType: fileType.txt.rawValue) else {
+        guard let pathForResource = Bundle.main.path(forResource: fileName, ofType: "html") else {
             YYxErrorHandler.printOptionFail();return String()
         }
         do {
